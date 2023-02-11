@@ -5,6 +5,7 @@ import htmlPurge from 'vite-plugin-purgecss';
 
 export default (): UserConfig => {
     return {
+        base: "./",
         plugins: [
             htmlPurge({}) as any,
             // viteCompression({
