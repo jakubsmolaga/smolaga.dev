@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import modelUrl from "./pc.glb?url";
 
-const run = async (): Promise<void> => {
-    const targetDiv = document.getElementById("div-3d");
+const run = async (targetDiv: HTMLDivElement): Promise<void> => {
+    // const targetDiv = document.getElementById("div-3d");
     if (targetDiv === null) throw new Error("failed to find the target div");
 
 
@@ -58,4 +58,14 @@ const run = async (): Promise<void> => {
     animate();
 };
 
-run();
+window.onload = async () => {
+    const mainDiv = document.getElementById("main");
+    const div3D = document.getElementById("div-3d");
+    if (mainDiv === null) throw new Error("failed to find #main element");
+    if (div3D === null) throw new Error("failed to find #div-3d element");
+    if (div3D.tagName !== "DIV") throw new Error("#div-3d is not a div");
+    mainDiv.style.opacity = '1.0';
+    await run(div3D as HTMLDivElement);
+    div3D.style.opacity = '1.0';
+};
+

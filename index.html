@@ -20,6 +20,21 @@
 			display: flex;
 			overflow: hidden;
 		}
+
+		#main {
+			opacity: 0;
+			transition: opacity 2s ease-in-out;
+		}
+
+		#div-3d {
+			height: 32rem;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			opacity: 0;
+			transition: opacity 2s ease-in-out;
+		}
 	</style>
 	<link rel="stylesheet" href="src/main.css">
 	<link
@@ -86,8 +101,7 @@
 				</li>
 			</ul>
 		</nav>
-		<div id="div-3d"
-			style="height: 32rem; width:100%; display: flex; flex-direction: column; ;align-items: center;" />
+		<div id="div-3d" />
 	</div>
 	<script type="module" src="src/main.ts"></script>
 </body>
