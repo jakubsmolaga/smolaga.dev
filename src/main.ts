@@ -16,6 +16,7 @@ const run = async (targetDiv: HTMLDivElement): Promise<void> => {
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     window.onresize = () => {
+        renderer.setSize(0,0);
         const { width, height } = targetDiv.getBoundingClientRect();
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
