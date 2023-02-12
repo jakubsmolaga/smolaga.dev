@@ -3,9 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import modelUrl from "./pc.glb?url";
 
 const run = async (targetDiv: HTMLDivElement): Promise<void> => {
-    // const targetDiv = document.getElementById("div-3d");
     if (targetDiv === null) throw new Error("failed to find the target div");
-
 
     const { width, height } = targetDiv.getBoundingClientRect();
 
@@ -17,7 +15,7 @@ const run = async (targetDiv: HTMLDivElement): Promise<void> => {
     camera.rotation.x = -Math.PI * 0.25;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    targetDiv.onresize = () => {
+    window.onresize = () => {
         const { width, height } = targetDiv.getBoundingClientRect();
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
