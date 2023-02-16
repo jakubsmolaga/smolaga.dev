@@ -1,19 +1,18 @@
 import { UserConfig } from "vite";
-import { ViteMinifyPlugin } from 'vite-plugin-minify';
-// import viteCompression from 'vite-plugin-compression';
-import htmlPurge from 'vite-plugin-purgecss';
+// import { ViteMinifyPlugin } from 'vite-plugin-minify';
+import postcssJitProps from 'postcss-jit-props';
+import OpenProps from 'open-props';
 
 export default (): UserConfig => {
     return {
         base: "./",
-        plugins: [
-            htmlPurge({}) as any,
-            // viteCompression({
-            //     algorithm: 'brotliCompress',
-            //     filter: /\.(js|mjs|json|css|html|glb)$/i,
-            //     deleteOriginFile: true,
-            // }),
-            ViteMinifyPlugin({})
-        ],
+        plugins: [],
+        css: {
+            postcss: {
+                plugins: [
+                    postcssJitProps(OpenProps),
+                ],
+            }
+        }
     };
 };

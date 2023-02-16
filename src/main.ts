@@ -16,7 +16,7 @@ const run = async (targetDiv: HTMLDivElement): Promise<void> => {
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     window.onresize = () => {
-        renderer.setSize(0,0);
+        renderer.setSize(0, 0);
         const { width, height } = targetDiv.getBoundingClientRect();
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
@@ -57,14 +57,32 @@ const run = async (targetDiv: HTMLDivElement): Promise<void> => {
     animate();
 };
 
+const buildToast = (msg: string): HTMLOutputElement => {
+    const e = document.createElement('output');
+    e.innerText = msg;
+    e.classList.add('toast');
+    return e;
+};
+
+const initCopyBtn = (): void => {
+    const copyBtn = document.getElementById('copy-btn');
+    const toastContainer = document.getElementById('toast-container');
+    if (copyBtn === null) return console.error('failed to find #copy-btn');
+    if (toastContainer === null) return console.error('failed to find #toast-container');
+    copyBtn.onclick = () => {
+        navigator.clipboard.writeText('contact@smolaga.dev');
+        const toast = buildToast('Email copied to clipboard');
+        toastContainer.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    };
+};
+
+
 window.onload = async () => {
-    const mainDiv = document.getElementById("main");
+    initCopyBtn();
     const div3D = document.getElementById("div-3d");
-    if (mainDiv === null) throw new Error("failed to find #main element");
     if (div3D === null) throw new Error("failed to find #div-3d element");
     if (div3D.tagName !== "DIV") throw new Error("#div-3d is not a div");
-    mainDiv.style.opacity = '1.0';
     await run(div3D as HTMLDivElement);
     div3D.style.opacity = '1.0';
 };
-
