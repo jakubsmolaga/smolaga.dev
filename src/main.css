@@ -1,5 +1,5 @@
 @import "open-props/normalize.dark.min.css";
-@import "open-props/buttons";
+@import "open-props/buttons.dark.min.css";
 
 header {
 	height: 100vh;
