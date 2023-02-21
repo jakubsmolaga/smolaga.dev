@@ -10,7 +10,9 @@
     },
     "devDependencies": {
         "@types/three": "^0.149.0",
+        "cssnano": "^5.1.15",
         "open-props": "^1.5.5",
+        "postcss": "^8.4.21",
         "postcss-jit-props": "^1.0.11",
         "typescript": "^4.9.3",
         "vite": "^4.1.0",
